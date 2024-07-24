@@ -1,0 +1,8 @@
+= prodigal
+
+unofficial containerization of the protein gene prediction program prodigal
+https://github.com/hyattpd/Prodigal
+
+using bioconda really
+https://anaconda.org/bioconda/prodigal
+
