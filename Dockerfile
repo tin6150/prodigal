@@ -4,7 +4,6 @@
 # where it get python from OS package, then pip to add libraries
 # see DevNotes.txt for more build details
 
-# modeled after atlas.git - Hist.Dockerfile.base has historical version of many OS tried and their pitfals. or see git commit 3e1332b
 
 
 # https://hub.docker.com/r/continuumio/anaconda3
@@ -68,16 +67,17 @@ RUN echo ''  ;\
     cd    /   ;\
     echo  ""
 
+ENV DBG_APP_VER  "Dockerfile 2024.0724"
+ENV DBG_DOCKERFILE Dockerfile__base
 
 RUN  cd / \
   && touch _TOP_DIR_OF_CONTAINER_  \
   && echo  "--------" >> _TOP_DIR_OF_CONTAINER_   \
   && TZ=PST8PDT date  >> _TOP_DIR_OF_CONTAINER_   \
-  && echo  "Dockerfile      2024.0413.0433"   >> _TOP_DIR_OF_CONTAINER_   \
+  && echo  "$DBG_APP_VER"      >> _TOP_DIR_OF_CONTAINER_   \
+  && echo  "$DBG_DOCKERFILE"   >> _TOP_DIR_OF_CONTAINER_   \
   && echo  "Grand Finale for Dockerfile"
 
-ENV DBG_APP_VER  "Dockerfile 2024.0413.0433"
-ENV DBG_DOCKERFILE Dockerfile__base
 
 ENV TZ America/Los_Angeles 
 # ENV TZ likely changed/overwritten by container's /etc/csh.cshrc
@@ -100,7 +100,8 @@ ENV TEST_DOCKER_ENV_NEQ1 "Dockerfile ENV assignment as foo bar, no  use of =, bo
 
 #ENTRYPOINT [ "/bin/bash" ]
 #ENTRYPOINT [ "/bin/python3" ]
-ENTRYPOINT [ "/opt/conda/bin/python3" ]  # anaconda's path
+#ENTRYPOINT [ "/opt/conda/bin/python3" ]  # anaconda's path
+ENTRYPOINT [ "/opt/conda/bin/prodigal" ]
 # $@ should be passed by docker run as arg when ENTRYPOINT is invoked
 # ref https://stackoverflow.com/questions/32727594/how-to-pass-arguments-to-shell-script-through-docker-run
 

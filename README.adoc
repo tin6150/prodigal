@@ -6,3 +6,11 @@ https://github.com/hyattpd/Prodigal
 using bioconda really
 https://anaconda.org/bioconda/prodigal
 
+actually, this one does have biocontainer:
+
+https://biocontainers.pro/tools/prodigal
+
+docker pull biocontainers/prodigal:v1-2.6.3-4-deb_cv1
+
+#XX singularity run https://depot.galaxyproject.org/singularity/prodigal:2.6.3--h8a409c4_8
+#XX this error out maybe link to arm64 image

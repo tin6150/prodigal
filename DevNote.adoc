@@ -1,0 +1,42 @@
+= Developer Notes =
+
+[,bash]
+
+APPTAINER_CACHEDIR=/mnt/c/tin/apptainer-repo
+#cd $SINGULARITY_CACHEDIR
+cd $APPTAINER_CACHEDIR
+time -p singularity pull --name prodigal docker://ghcr.io/tin6150/prodigal:main
+### takes a long time in gs :-/  
+
+#XX singularity pull --name python-chewbbaca.SIF docker://ghcr.io/tin6150/python:61f1422  # can NOT pull by commit ref
+
+
+[,bash]
+
+docker pull          ghcr.io/tin6150/prodigal:main  # cant use upper case letters!
+
+docker run --rm -it  --entrypoint=sh  ghcr.io/tin6150/prodigal:main 
+
+
+# won't be using biocintainer version, as
+# default entrypoint is bash
+
+docker pull biocontainers/prodigal:v1-2.6.3-4-deb_cv1
+
+docker run --rm -it   --entrypoint=prodigal  biocontainers/prodigal:v1-2.6.3-4-deb_cv1
+
+
+== testing ==
+
+
+SINGULARITY_CACHEDIR=/global/scratch/users/tin/cacheDir
+
+singularity exec $SINGULARITY_CACHEDIR/prodigal prodigal -h 
+
+
+
+== base os selection ==
+
+main branch use conda image
+
+
