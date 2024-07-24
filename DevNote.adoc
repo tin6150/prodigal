@@ -15,6 +15,7 @@ time -p singularity pull --name prodigal docker://ghcr.io/tin6150/prodigal:main
 
 docker pull          ghcr.io/tin6150/prodigal:main  # cant use upper case letters!
 
+docker run --rm -it                   ghcr.io/tin6150/prodigal:main 
 docker run --rm -it  --entrypoint=sh  ghcr.io/tin6150/prodigal:main 
 
 
@@ -32,6 +33,9 @@ docker run --rm -it   --entrypoint=prodigal  biocontainers/prodigal:v1-2.6.3-4-d
 SINGULARITY_CACHEDIR=/global/scratch/users/tin/cacheDir
 
 singularity exec $SINGULARITY_CACHEDIR/prodigal prodigal -h 
+
+
+/mnt/c/tin/apptainer-repo/prodigal  -i K_CKDN230030144-1A_HGKHYDSX7_L2.fasta -o gene.coords.gbk -a protein.translations.faa    -t  shrimp_training1.trn
 
 
 
